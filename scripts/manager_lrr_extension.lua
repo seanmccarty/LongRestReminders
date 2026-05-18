@@ -9,8 +9,8 @@ function onInit()
 	end
 
 	--Override the original function
-	fSavedRestFunction = CombatManager2.rest;
-	CombatManager2.rest = rest;
+	fSavedRestFunction = CombatManager.rest;
+	CombatManager.rest = rest;
 end
 
 ---Sends usage instructions to the Chat
@@ -21,14 +21,14 @@ end
 
 ---Triggers a long rest using the same sequence as the Combat Manager
 function processLRRLongRest()
-	ChatManager.Message(Interface.getString("ct_message_restlong"), true);
-	CombatManager2.rest(true);
+	-- ChatManager.Message(Interface.getString("ct_message_restlong"), true);
+	CombatManager.rest(true);
 end
 
 ---Triggers a short rest using the same sequence as the Combat Manager
 function processLRRShortRest()
-	ChatManager.Message(Interface.getString("ct_message_rest"), true);
-	CombatManager2.rest(false);
+	-- ChatManager.Message(Interface.getString("ct_message_rest"), true);
+	CombatManager.rest(false);
 end
 
 ---Calls the original rest function and then runs additional code
@@ -38,9 +38,9 @@ function rest(bLong)
 
 	if bLong and Session.IsHost then
 		--Look for and open the node that has a name of LRR
-		for _, vNode in pairs(DB.getChildren("encounter")) do
+		for _, vNode in pairs(DB.getChildren("reference.refmanualdata")) do
 			if DB.getValue(vNode, "name", "") == "LRR" then
-				Interface.openWindow("encounter", vNode);
+				Interface.openWindow("referencemanualpage", vNode);
 				return;
 			end
 		end
