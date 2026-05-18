@@ -3,15 +3,15 @@
 <root version="3.0">
 	<properties>
 		<name>Feature: Long Rest Reminders</name>
-		<version>1.0</version>
+		<version>~dev_version_short~</version>
 		<author>mccartysr</author>
 		<description>Displays a specific story entry when a long rest is taken</description>
 		<ruleset>
 			<name>5E</name>
-			<minrelease>8.1</minrelease>
+			<minrelease>9</minrelease>
 		</ruleset>
 	</properties>
-	<announcement text="Long Rest Reminders version 1.0 by mccartysr, 2026\rFor instructions type /LRR" font="emotefont" icon="Logo_Mccartysr"/>>
+	<announcement text="Long Rest Reminders ~dev_version~ by mccartysr, 2026\rFor instructions type /LRR" font="emotefont" icon="Logo_Mccartysr"/>>
 	<base>
 		<script name="LRRManager" file="scripts/manager_lrr_extension.lua" />
 		<icon name="Logo_Mccartysr" file="logo_mccartysr.png" />
