@@ -38,12 +38,20 @@ function rest(bLong)
 
 	if bLong and Session.IsHost then
 		--Look for and open the node that has a name of LRR
+		-- Check the simple story entries and then the advanced
+		for _, vNode in pairs(DB.getChildren("encounter")) do
+			if DB.getValue(vNode, "name", "") == "LRR" then
+				Interface.openWindow("encounter", vNode);
+				return;
+			end
+		end
 		for _, vNode in pairs(DB.getChildren("reference.refmanualdata")) do
 			if DB.getValue(vNode, "name", "") == "LRR" then
 				Interface.openWindow("referencemanualpage", vNode);
 				return;
 			end
 		end
+
 		--If this section is reached, it means the story entry was not found
 		local msg = { text = "Story entry named LRR not found" };
 		Comm.addChatMessage(msg);
